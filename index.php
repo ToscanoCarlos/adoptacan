@@ -1,6 +1,6 @@
 
 <?php 
-    require 'includes/funciones.php';
+    require 'includes/app.php';
     incluirTemplate('header', $inicio = true);
 ?>
 
@@ -57,8 +57,8 @@
                              </div>
                          </div>
                          <div class="service_content text-center">
-                            <h3>Productos</h3>
-                            <p>Busca los mejores productos para la higiene y cuidado de tu amigo</p>
+                            <h3>Poner en Adopción</h3>
+                            <p>Si conoces a un perro que necesita una familia puedes ayudarlo</p>
                          </div>
                     </div>
                 </div>

@@ -57,10 +57,10 @@
                           <div class="main-menu  d-none d-lg-block">
                               <nav>
                                   <ul id="navigation">
-                                      <li><a href="blog.php">Adopta</a></li>
-                                      <li><a href="about.php">Productos</a></li>
-                                      <li><a href="service.php">Servicios</a></li>
-                                      <li><a href="contact.php">Contacto</a></li>
+                                      <li><a href="adopta.php">Adopta</a></li>
+                                      <!-- <li><a href="about.php">Acerca de Nosotros</a></li> -->
+                                      <!-- <li><a href="service.php">Servicios</a></li> -->
+                                      <li><a href="add.php">Poner en Adopción</a></li>
                                   </ul>
                               </nav>
                           </div>
