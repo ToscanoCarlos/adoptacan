@@ -4,10 +4,12 @@
     require 'config/database.php';
     require __DIR__ . '/../vendor/autoload.php';
 
+    $db = conectarDB();
+
     use App\ActiveRecord;
     use App\Perro;
 
-    $perro = new Perro();
+    ActiveRecord::setDB($db);
 
 
     

@@ -18,6 +18,12 @@
         </div>
     </div>
     <!-- bradcam_area_end -->
+
+    //<?php 
+    //$limite = 3;
+    //include 'includes/templates/adopciones.php';
+    //?>
+
     <div class="product-container">
     <div class="product-item">
       <img class="product-image" src="https://via.placeholder.com/300" alt="Producto 1">

@@ -4,6 +4,7 @@
 
     class Perro extends ActiveRecord{
         protected static $tabla = 'perro';
+        protected static $id = 'idPerro';
         protected static $columnasDB = ['idPerro', 'nombre', 'raza', 'edad', 'genero', 'descripcion', 'extra', 'imagen', 'Refugio_idRefugio'];
     
         public $idPerro;
@@ -30,7 +31,7 @@
             
         }
 
-        public function validPerroar() {
+        public function validPerro() {
             if(!$this->nombre) {
                 self::$errores[] = "Debes añadir un nombre";
             }

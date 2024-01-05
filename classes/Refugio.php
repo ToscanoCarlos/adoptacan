@@ -4,6 +4,7 @@ namespace App;
 
 class Refugio extends ActiveRecord{
     protected static $tabla = 'refugio';
+    protected static $id = 'idRefugio';
     protected static $columnasDB = ['idRefugio', 'nombre', 'email', 'telefono', 'ubicacion'];
     
     public $idRefugio;
