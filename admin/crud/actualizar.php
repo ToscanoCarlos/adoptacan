@@ -1,6 +1,7 @@
 <?php
 
-use App\ActiveRecord;
+use App\Perro;
+use App\Refugio;
 use Intervention\Image\ImageManagerStatic as Image;
 
     require '../../includes/app.php';
@@ -18,17 +19,14 @@ use Intervention\Image\ImageManagerStatic as Image;
         header('Location: /bienesraices/admin/index.php');
     }
 
-    // Obtener los datos de la propiedad
-    $resultadoPropiedad = mysqli_query($db, $consultaPropiedad);
-    $propiedad = mysqli_fetch_assoc($resultadoPropiedad);
+    // Obtener los datos del perro
+    $perro = Perro::find($id);
 
-
-    // Consultar para obtener los vendedores
-    $consulta = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($db, $consulta);
+    // Consulta para obtener todos los refugios
+    $refugio = Refugio::all();
 
     // Arreglo con mensajes de errores
-    $errores = ActiveRecord::getErrores();
+    $errores = Perro::getErrores();
 
     // Ejecutar despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -51,8 +49,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 
         //Revisar que el arreglo de errores este vacio
         if(empty($errores)) {
-            
-            $image->save(CARPETA_IMAGENES . $nombreImagen);
+            if ($_FILES['perro']['tmp_name']['imagen']) {
+                // Almacenar la imagen
+                $image->save(CARPETA_IMAGENES . $nombreImagen);
+            }
 
             $perro->guardar();
 

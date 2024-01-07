@@ -1,29 +1,23 @@
 <?php
 require 'includes/app.php';
 
-use App\ActiveRecord;
+use App\Perro;
+use App\Refugio;
 use Intervention\Image\ImageManagerStatic as Image;
-
-// use App\refugio;
 
 //estaAutenticado();
 
-$db = conectarDB();
+$perro = new Perro;
 
-$perro = new ActiveRecord;
-
-// Consultar para obtener los refugioes
-$consulta = "SELECT * FROM perro";
-$resultado = mysqli_query($db, $consulta);
-
-
+// Consulta para obtener todos los perros
+$refugio = Refugio::all();
 // Arreglo con mensajes de errores
-$errores = ActiveRecord::getErrores();
+$errores = Perro::getErrores();
 
 // Ejecutar despues de que el usuario envia el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $perro = new ActiveRecord($_POST['perro']);
+    $perro = new Perro($_POST['perro']);
 
     // Generar un nombre único
     $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
@@ -32,15 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_FILES['perro']['tmp_name']['imagen']) {
         $image = Image::make($_FILES['perro']['tmp_name']['imagen'])->fit(800, 600);
         $perro->setImagen($nombreImagen);
+        
     }
+
 
     // Validar
     $errores = $perro->validar();
 
     if (empty($errores)) {
-
-        $perro->guardar();
-
+      
         //Crear carpeta de imagenes
         if (!is_dir(CARPETA_IMAGENES)) {
             mkdir(CARPETA_IMAGENES);
@@ -49,7 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $image->save(CARPETA_IMAGENES . $nombreImagen);
 
         // Guardar en la base de datos
-        $resultado = $perro->guardar();
+        debuguear($perro);
+        $perro->guardar();
 
     }
 }
@@ -90,7 +85,7 @@ incluirTemplate('header');
                 <h2 class="contact-title">A continuación proporciona los datos</h2>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form" action="/add.php" method="POST" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
+                <form class="form-contact contact_form" action="/add.php" method="POST" enctype="multipart/form-data">
                     <?php include 'includes/templates/formulario_perros.php'; ?>
 
 

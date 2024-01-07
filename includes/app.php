@@ -7,7 +7,6 @@
     $db = conectarDB();
 
     use App\ActiveRecord;
-    use App\Perro;
 
     ActiveRecord::setDB($db);
 

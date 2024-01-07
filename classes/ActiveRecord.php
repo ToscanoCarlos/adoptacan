@@ -8,11 +8,13 @@ class ActiveRecord{
     protected static $db;
     protected static $columnasDB = [];
     protected static $tabla = '';
-    protected static $id = '';
+    // protected static $id = '';
+    // protected static $imagen = '';
 
     //Errores   
     protected static $errores = [];
 
+    
 
     //Definir la conexion a la base de datos
     public static function setDB($database){
@@ -20,11 +22,32 @@ class ActiveRecord{
     }
 
     public function guardar(){
-        if(!is_null($this->id)){
+        if(!is_null($this->idPerro)){
             $this->actualizar();
         } else {
             $this->crear();
         }
+    }
+
+    public function crear(){
+        //Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+
+        //Insertar en la base de datos
+        $query = " INSERT INTO " . static::$tabla . " ( ";
+        $query .= join(', ', array_keys($atributos));
+        $query .= " ) VALUES (' "; 
+        $query .= join("', '", array_values($atributos));
+        $query .= " ') ";
+ 
+        $resultado = self::$db->query($query);
+
+        if($resultado){
+            header('Location: /admin/index.php?resultado=1');
+        }
+
+
     }
 
     public function actualizar(){
@@ -38,47 +61,25 @@ class ActiveRecord{
 
         $query = " UPDATE " . static::$tabla . " SET ";
         $query .= join(', ', $valores);
-        $query .= " WHERE " . static::$id . " = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " WHERE idPerro = '" . self::$db->escape_string($this->idPerro) . "' ";
         $query .= " LIMIT 1 ";
 
         $resultado = self::$db->query($query);
 
         if($resultado){
-            header('Location: /anipat-master/admin/index.php?resultado=2');
-        }
-
-
-    }
-
-    public function crear(){
-        //Sanitizar los datos
-        $atributos = $this->sanitizarAtributos();
-
-
-        debuguear($atributos);
-        //Insertar en la base de datos
-        $query = " INSERT INTO " . static::$tabla . " ( ";
-        $query .=  join(', ', array_keys($atributos));
-        $query .= " ) VALUES (' ";
-        $query .=  join("', '", array_values($atributos));
-        $query .= " ') ";
- 
-        $resultado = self::$db->query($query);
-
-        if($resultado){
-            header('Location: /anipat-master/index.php?resultado=1');
+            header('Location: /admin/index.php?resultado=2');
         }
 
 
     }
 
     public function eliminar(){
-        $query = "DELETE FROM " . static::$tabla . " WHERE " . static::$id . " = '" . self::$db->escape_string($this->id) . "' LIMIT 1";
+        $query = "DELETE FROM " . static::$tabla . " WHERE idPerro = " . self::$db->escape_string($this->idPerro) . " LIMIT 1";
         $resultado = self::$db->query($query);
 
         if($resultado){
             $this->borrarImagen();
-            header('Location: /anipat-master/admin/index.php?resultado=3');
+            header('Location: /admin/index.php?resultado=3');
         }
 
 
@@ -87,7 +88,7 @@ class ActiveRecord{
 
     public function atributos(){
         $atributos = [];
-        foreach(self::$columnasDB as $columna){
+        foreach(static::$columnasDB as $columna){
             if($columna === 'id') continue;
             $atributos[$columna] = $this->$columna;
         }
@@ -108,7 +109,7 @@ class ActiveRecord{
     //Subida de archivos
     public function setImagen($imagen){
         //Elimina la imagen previa
-        if(!is_null($this->id)){
+        if(!is_null($this->idPerro)){
             $this->borrarImagen();
         }
         // Asignar al atributo de imagen el nombre de la imagen
@@ -128,7 +129,13 @@ class ActiveRecord{
 
     // Validacion
     public static function getErrores(){
-        return self::$errores;
+        return static::$errores;
+    }
+
+    public function validar(){
+        static::$errores = [];
+
+        return static::$errores;
     }
     
     
@@ -142,9 +149,18 @@ class ActiveRecord{
         return $resultado;
     }
 
+    // Obtiene determinado numero de registros
+    public static function get($cantidad){
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT " . $cantidad;
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+
     //Buscar un perro por id
     public static function find($id){
-        $query = "SELECT * FROM " . static::$tabla . " WHERE " . static::$id . " = ${id}";
+        $query = "SELECT * FROM " . static::$tabla .  " WHERE idPerro = ${id}";
 
         $resultado = self::consultarSQL($query);
 
@@ -158,7 +174,7 @@ class ActiveRecord{
         //Iterar los resultados
         $array = [];
         while($registro = $resultado->fetch_assoc()){
-            $array[] = self::crearObjeto($registro);
+            $array[] = static::crearObjeto($registro);
         }
 
         //Liberar la memoria

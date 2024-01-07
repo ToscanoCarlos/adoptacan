@@ -212,3 +212,10 @@ $query = " INSERT INTO perro (nombre, raza, edad, genero, descripcion, extra, im
         }
     }
 
+                <!-- <?php foreach ($refugios as $refugio) : ?>
+                    <option 
+                    <?php echo $perro->Refugio_idRefugio === $refugio->idRefugio ? 'selected' : ''; ?> 
+                        value="<?php echo s($refugio->idRefugio); ?>">
+                        <?php echo s($refugio->nombre); ?>
+                    </option>
+                <?php endforeach; ?> -->

@@ -1,5 +1,5 @@
 <?php 
-    require 'includes/app.php';
+    require '../../includes/app.php';
     incluirTemplate('header', $inicio = true);
 ?>
     <!-- header_start  -->
@@ -19,10 +19,9 @@
     </div>
     <!-- bradcam_area_end -->
 
-    //<?php 
-    //$limite = 3;
-    //include 'includes/templates/adopciones.php';
-    //?>
+    <?php 
+    include 'includes/templates/adopciones.php';
+    ?>
 
     <div class="product-container">
     <div class="product-item">

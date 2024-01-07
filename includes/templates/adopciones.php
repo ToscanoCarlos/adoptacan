@@ -1,50 +1,29 @@
 <?php 
     // Importar la conexión
-    require __DIR__ . '/../config/database.php';
-    $db = conectarDB();
+    use App\Perro;
 
+    // Implementar un método para obtener todos los perros
+    $perros = Perro::all();
 
-    // consultar
-    $query = "SELECT * FROM perro LIMIT ${limite}";
-
-    // obtener resultado
-    $resultado = mysqli_query($db, $query);
-
-
-?>
-<?php 
-    // Importar la conexión
-    require __DIR__ . '/../config/database.php';
-    $db = conectarDB();
-
-
-    // consultar
-    $query = "SELECT * FROM perro LIMIT ${limite}";
-
-    // obtener resultado
-    $resultado = mysqli_query($db, $query);
-
-
+    if($_SERVER['SCRIPT_NAME'] === '/anipet-master/adopta.php') {
+        $perros = Perro::all();   
+    } else {
+        $perros = Perro::get(3);
+    }
 ?>
 
 <div class="product-container">
-    <?php while($perro = mysqli_fetch_assoc($resultado)): ?>
+    <?php foreach($perro as $perro): ?>
     <div class="product-item">
-      <img loading="lazy" src="/anipet-master/imagenes/<?php echo $perro['imagen']; ?>" alt="anuncio">
+      <img loading="lazy" src="/anipet-master/imagenes/<?php echo $perro->imagen; ?>" alt="anuncio">
       <div class="product-details">
-        <h2 class="product-title"><?php echo $perro['nombre']; ?></h2>
-        <span class="product-price"><?php echo $perro['edad']; ?></span>
-        <p class="product-description"><?php echo $perro['raza']; ?></p>
-        <p class="product-description"><?php echo $perro['genero']; ?></p>
-        <a href="anuncio.php?idPerro=<?php echo $perro['idPerro']; ?>" class="product-button">Ver Perro</a>
+        <h2 class="product-title"><?php echo $perro->nombre; ?></h2>
+        <span class="product-price"><?php echo $perro->edad; ?></span>
+        <p class="product-description"><?php echo $perro->raza; ?></p>
+        <p class="product-description"><?php echo $perro->genero; ?></p>
+        <a href="anuncio.php?idPerro=<?php echo $perro->idPerro; ?>" class="product-button">Ver Perro</a>
       </div>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
 
 </div>
     
-
-<?php 
-
-    // Cerrar la conexión
-    mysqli_close($db);
-?>

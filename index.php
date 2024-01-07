@@ -113,7 +113,7 @@
                     <div class="adapt_help">
                         <div class="section_title">
                             <h3><span>Te necesitamos</span>
-                                Addopta</h3>
+                                Adopta</h3>
                             <a href="contact.html" class="boxed-btn3">Contactanos</a>
                         </div>
                     </div>
@@ -153,6 +153,12 @@
         </div>
     </div>
     <!-- adapt_area_end  -->
+
+    <!-- announce_area_start  -->
+    <?php 
+    include 'includes/templates/adopciones.php';
+    ?>
+    <!-- announce_area_end  -->
 
     <!-- testmonial_area_start  -->
     <div class="testmonial_area">

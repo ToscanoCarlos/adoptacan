@@ -28,10 +28,11 @@
             $this->extra = $args['extra'] ?? '';
             $this->imagen = $args['imagen'] ?? '';
             $this->Refugio_idRefugio = $args['Refugio_idRefugio'] ?? '';
+
             
         }
 
-        public function validPerro() {
+        public function validar() {
             if(!$this->nombre) {
                 self::$errores[] = "Debes añadir un nombre";
             }
