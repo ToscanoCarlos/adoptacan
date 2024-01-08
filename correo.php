@@ -8,8 +8,7 @@ require 'includes/funciones.php';
 require 'includes/config/database.php';
 require 'vendor/autoload.php';
 
-$id = $_GET['id'];
-$id = filter_var($id, FILTER_VALIDATE_INT);
+
 
 
 
@@ -17,11 +16,7 @@ $db = conectarDB();
 $mail = new PHPMailer(true);
 
 // Obtener los datos de la perro
-$consultaPerro = "SELECT idPerro,nombre,Refugio_idRefugio FROM perro WHERE idPerro = ${id}";
-// $queryPerro = "SELECT idPerro, nombre FROM perro WHERE idPerro = ${id}";
-// $queryRefugio = "SELECT nombre FROM refugio WHERE idRefugio = ${id}";
-$resultadoPerro = mysqli_query($db, $consultaPerro);
-$perro = mysqli_fetch_assoc($resultadoPerro);
+
 
 
 $mail = new PHPMailer(true);
@@ -38,15 +33,7 @@ $telefono = '';
 $experiencia_mantenimiento_mascotas = '';
 $motivo_adopcion = '';
 $espacio_disponible = '';
-$idPerro = $perro['idPerro'];
-$nombrePerro = $perro['nombre'];
-$idRefugio = $perro['Refugio_idRefugio'];
 
-$consultaRefugio = "SELECT nombre FROM refugio WHERE idRefugio = $idRefugio";
-$resultadoRefugio = mysqli_query($db, $consultaRefugio);
-$refugio = mysqli_fetch_assoc($resultadoRefugio);
-
-$refugioNombre = $refugio['nombre'];
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,9 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $experiencia_mantenimiento_mascotas = mysqli_real_escape_string($db, $_POST['experiencia_mantenimiento_mascotas']);
     $motivo_adopcion = mysqli_real_escape_string($db, $_POST['motivo_adopcion']);
     $espacio_disponible = mysqli_real_escape_string($db, $_POST['espacio_disponible']);
-    $nombrePerro = mysqli_real_escape_string($db, $_POST['nombrePerro']);
-    $perroId = mysqli_real_escape_string($db, $_POST['perroId']);
-    $refugioNombre = mysqli_real_escape_string($db, $_POST['$refugioNombre']);
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    $consultaPerro = "SELECT idPerro,nombre,Refugio_idRefugio FROM perro WHERE idPerro = ${id}";
+    // $queryPerro = "SELECT idPerro, nombre FROM perro WHERE idPerro = ${id}";
+    // $queryRefugio = "SELECT nombre FROM refugio WHERE idRefugio = ${id}";
+    $resultadoPerro = mysqli_query($db, $consultaPerro);
+    $perro = mysqli_fetch_assoc($resultadoPerro);
+    $idPerro = $perro['idPerro'];
+    $nombrePerro = $perro['nombre'];
+    $idRefugio = $perro['Refugio_idRefugio'];
+
+    $consultaRefugio = "SELECT nombre FROM refugio WHERE idRefugio = $idRefugio";
+    $resultadoRefugio = mysqli_query($db, $consultaRefugio);
+    $refugio = mysqli_fetch_assoc($resultadoRefugio);
+
+    $refugioNombre = $refugio['nombre'];
+
+
+
 
 
 
@@ -127,32 +131,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Construir el enlace de recuperación de contraseña con el token
 
 
-                    
+
                     $message = "
-<html>
-<head>
-  <title>Solicitud de adopción de perro</title>
-</head>
-<body>
-  <h2>Solicitud de adopción de perro</h2>
-  <p>Nombre: $nombre</p>
-  <p>Apellido: $apellido</p>
-  <p>Edad: $edad</p>
-  <p>Dirección: $direccion</p>
-  <p>Ciudad: $ciudad</p>
-  <p>Código Postal: $codigo_postal</p>
-  <p>Correo Electrónico: $email</p>
-  <p>Teléfono: $telefono</p>
-  <p>Experiencia en mantenimiento de mascotas: $experiencia_mantenimiento_mascotas</p>
-  <p>Motivo de adopción: $motivo_adopcion</p>
-  <p>Espacio disponible: $espacio_disponible</p>
-  <p>Refugio asociado: $refugioNombre</p>
-                    <p>Nombre del perro: $perroNombre</p>
-                    <p>ID del perro: $perroId</p>
-</body>
-</html>
+                <html>
+                <head>
+                <title>Solicitud de adopción de perro </title>
+                </head>
+                <body>
+                <h2>Solicitud de adopción de $nombrePerro</h2>
+                <p>Nombre: $nombre</p>
+                <p>Apellido: $apellido</p>
+                <p>Edad: $edad</p>
+                <p>Dirección: $direccion</p>
+                <p>Ciudad: $ciudad</p>
+                <p>Código Postal: $codigo_postal</p>
+                <p>Correo Electrónico: $email</p>
+                <p>Teléfono: $telefono</p>
+                <p>Experiencia en mantenimiento de mascotas: $experiencia_mantenimiento_mascotas</p>
+                <p>Motivo de adopción: $motivo_adopcion</p>
+                <p>Espacio disponible: $espacio_disponible</p>
+                <p>Refugio asociado: $refugioNombre</p>
+                <p>ID del perro: $idPerro</p>
+                </body>
+                </html>
 ";
-debuguear($message);
+
                     // Configuración del servidor SMTP de Gmail
                     $mail->isSMTP();
                     $mail->Host       = 'smtp.gmail.com';

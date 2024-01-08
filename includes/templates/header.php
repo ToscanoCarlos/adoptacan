@@ -59,12 +59,12 @@ $auth = $_SESSION['login'] ?? false;
                                     <ul id="navigation">
                                         <li><a href="/adoptacan/anuncios.php">Adopta</a></li>
                                         <!-- <li><a href="about.php">Acerca de Nosotros</a></li> -->
-                                        <!-- <li><a href="service.php">Servicios</a></li> -->
+                                        <li><a href="/adoptacan/service.php">Servicios</a></li>
                                         <li><a href="/adoptacan/admin/crud/crear.php">Poner en Adopción</a></li>
                                         <?php if ($auth) : ?>
-                                            <li><a href="close.php">Cerrar Sesión</a></li>
+                                            <li><a href="/adoptacan/close.php">Cerrar Sesión</a></li>
                                         <?php else : ?>
-                                            <li><a href="login.php">Ingresar</a></li>
+                                            <li><a href="/adoptacan/login.php">Ingresar</a></li>
                                         <?php endif; ?>
                                     </ul>
                                 </nav>
