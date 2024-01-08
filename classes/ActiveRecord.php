@@ -33,7 +33,6 @@ class ActiveRecord{
         //Sanitizar los datos
         $atributos = $this->sanitizarAtributos();
 
-
         //Insertar en la base de datos
         $query = " INSERT INTO " . static::$tabla . " ( ";
         $query .= join(', ', array_keys($atributos));
@@ -56,10 +55,10 @@ class ActiveRecord{
 
         $valores = [];
         foreach($atributos as $key => $value){
-            $valores[] = "{$key} = '{$value}'";
+            $valores[] = "{$key}='{$value}'";
         }
 
-        $query = " UPDATE " . static::$tabla . " SET ";
+        $query = "UPDATE " . static::$tabla . " SET ";
         $query .= join(', ', $valores);
         $query .= " WHERE idPerro = '" . self::$db->escape_string($this->idPerro) . "' ";
         $query .= " LIMIT 1 ";
@@ -69,8 +68,6 @@ class ActiveRecord{
         if($resultado){
             header('Location: /admin/index.php?resultado=2');
         }
-
-
     }
 
     public function eliminar(){

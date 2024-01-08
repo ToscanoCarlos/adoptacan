@@ -1,45 +1,42 @@
 <div class="row">
     <div class="col-12">
         <div class="form-group">
-            <input class="form-control valid" name="perro[nombre]" id="nombre" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa el nombre'" placeholder="Nombre" value="<?php echo s($perro->nombre); ?>">
+            <input class="form-control valid" name="nombre" id="nombre" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa el nombre'" placeholder="Nombre" value="<?php echo $nombre; ?>">
         </div>
     </div>
     <div class="col-12">
         <div class="form-group">
-            <input class="form-control valid" name="perro[raza]" id="raza" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa la raza'" placeholder="Raza" value="<?php echo s($perro->raza); ?>">
+        <input class="form-control valid" name="raza" id="raza" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa la raza'" placeholder="Nombre" value="<?php echo $raza; ?>">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
-            <input class="form-control valid" name="perro[edad]" id="edad" type="number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa la edad'" placeholder="Edad" value="<?php echo s($perro->edad); ?>"">
+            <input class="form-control" name="edad" id="edad" type="number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa la edad'" placeholder="Edad" value="<?php echo $edad; ?>">
         </div>
     </div>
     <div class=" col-sm-6">
             <div class="form-group">
-                <select class="form-control" name="perro[genero]" id="genero" ">
+                <select class="form-control" name="genero" id="genero" ">
                 <option value="" selected>Selecciona el género</option>
-                <option value="macho">Macho</option>
-                <option value="hembra">Hembra</option>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
                 </select>
             </div>
         </div>
         <div class="col-12">
             <div class="form-group">
-                <textarea class="form-control w-100" name="perro[descripcion]" id="descripcion" cols="30" rows="6" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa la descripción'" placeholder="Descripción" value="<?php echo s($perro->descripcion); ?>"></textarea>
+                <textarea class="form-control w-100" name="descripcion" id="descripcion" cols="30" rows="6" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa la descripción'" placeholder="Descripción" value="<?php echo $descripcion; ?>"></textarea>
             </div>
         </div>
         <div class="col-12">
             <div class="form-group">
-                <input class="form-control" name="perro[extra]" id="extra" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa información extra'" placeholder="Información Extra" value="<?php echo s($perro->extra); ?>">
+                <input class="form-control" name="extra" id="extra" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa información extra'" placeholder="Información Extra" value="<?php echo $extra; ?>">
             </div>
         </div>
         <div class="col-12">
             <div class="form-group">
                 <p>Agrega una imagen</p>
-                <input class="form-control" name="perro[imagen]" id="imagen" type="file" accept="image/jpeg, image/png">
-                <?php if ($perro->imagen) { ?>
-                    <img src="/anipat-master/imagenes/<?php echo $perro->imagen; ?>" alt="Imagen del perro" class="imagen-small">
-                <?php } ?>
+                <input class="form-control" name="imagen" id="imagen" type="file" accept="image/jpeg, image/png">
             </div>
         </div>
         
@@ -47,7 +44,7 @@
             <div class="form-group">
                 <p>Seleccione un refugio asociado</p>
                 <label for="refugio">Refugio</label>
-                <select class="form-control" name="perro[Refugio_idRefugio]" id="refugio">
+                <select class="form-control" name="Refugio_idRefugio" id="refugio">
                 <option value="" selected>Selecciona el refugio</option>
                 <option value="1">Milagros Caninos</option>
                 <option value="2">San Gregorio</option>

@@ -1,6 +1,6 @@
 
 <?php 
-    require 'includes/app.php';
+    require 'includes/funciones.php';
     incluirTemplate('header', $inicio = true);
 ?>
 
@@ -156,8 +156,10 @@
 
     <!-- announce_area_start  -->
     <?php 
-    include 'includes/templates/adopciones.php';
-    ?>
+
+$limite = 3;
+include 'includes/templates/anuncios.php';
+?>
     <!-- announce_area_end  -->
 
     <!-- testmonial_area_start  -->

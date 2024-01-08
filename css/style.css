@@ -1,6 +1,328 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,700|Poppins:200,200i,300,300i,400,500,500i,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,700|Poppins:200,200i,300,300i,400,500,500i,600,700,800,900&display=swap");
-/* line 1, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_extend.scss */
+
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contenedor-anuncios {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+.anuncio {
+  background-color: lighten(gray, 5);
+  border: 1px solid darken(gray, 10);
+  margin-bottom: 2rem;
+
+  .contenido-anuncio {
+      padding: 2rem;
+  }
+
+  h3, p {
+      margin: 0;
+  }
+
+}
+.precio {
+  color: green;
+  font-weight: black;
+  font-size: 3rem;
+}
+
+.iconos-caracteristicas {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  max-width: 40rem;
+
+  li {
+      flex: 1;
+      display: flex;
+
+      img {
+          flex:  0 0 3rem;
+          margin-right: 1rem;
+      }
+      p {
+          font-weight: black;
+      }
+  }
+}
+
+
+.contenedor {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .seccion {
+            padding: 20px 0;
+        }
+
+        .contenido-centrado {
+            text-align: center;
+        }
+
+        .titulo {
+            margin-bottom: 10px;
+        }
+
+        .imagen-perro {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .resumen-perro {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .precio {
+            font-size: 24px;
+            font-weight: bold;
+            color: #009688;
+            margin-bottom: 10px;
+        }
+
+        .iconos-caracteristicas {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .iconos-caracteristicas li {
+            margin: 0 10px;
+        }
+
+        .iconos-caracteristicas p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+.olvidar-contrasena {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.olvidar-contrasena a {
+  color: #dc3545;
+  text-decoration: none;
+}
+
+.olvidar-contrasena a:hover {
+  text-decoration: underline;
+}
+
+.crear-cuenta {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.crear-cuenta a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.crear-cuenta a:hover {
+  text-decoration: underline;
+}
+.contenedor {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.formulario {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.alerta {
+  padding: .5rem;
+  text-align: center;
+  color: white;
+  font-weight: black;
+  text-transform: uppercase;
+  margin: 1rem 0;
+
+  &.error {
+      background-color: red;
+  }
+
+  &.exito {
+      background-color: greenyellow;
+  }
+}
+
+table.perros {
+  margin-top: 4rem;
+  width: 100%;
+  border-spacing: 0;
+
+  thead {
+      background-color: greenyellow;
+
+      th {
+          color: white;
+          padding: 2rem;
+      }
+  }
+
+  .imagen-tabla {
+      width: 10rem;
+  }
+}
+
+.imagen-small {
+  width: 20rem;
+}
+
+.boton-amarillo {
+  background-color: yellow;
+  color: white;
+  font-weight: black;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 5rem / 2;
+  margin-bottom: 1rem;
+  display: inline-block;
+  border: none;
+
+  &:hover {
+      background-color: darken(yellow, 5);
+      cursor: pointer;
+  }
+}
+
+.boton-amarillo-block {
+  background-color: yellow;
+  color: white;
+  font-weight: black;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 5rem / 2;
+  margin-bottom: 1rem;
+  display: block;
+  border: none;
+
+  &:hover {
+      background-color: darken(yellow, 5);
+      cursor: pointer;
+}
+}
+
+.boton-verde {
+  background-color: greenyellow;
+  color: white;
+  font-weight: black;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 5rem / 2;
+  margin-bottom: 1rem;
+  display: inline-block;
+  border: none;
+
+  &:hover {
+      background-color: darken(greenyellow, 5);
+      cursor: pointer;
+  }
+}
+
+
+.boton-rojo-block {
+  background-color: red;
+  color: white;
+  font-weight: black;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 5rem / 2;
+  margin-bottom: 1rem;
+  display: block;
+  border: none;
+
+  &:hover {
+      background-color: darken(red, 5);
+      cursor: pointer;
+}
+ width: 100%;
+}
+.boton-verde-block {
+  background-color: greenyellow;
+  color: white;
+  font-weight: black;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: 5rem / 2;
+  margin-bottom: 1rem;
+  display: block;
+  border: none;
+
+  &:hover {
+      background-color: darken(greenyellow, 5);
+      cursor: pointer;
+}
+}
+
+
 
 .product-container {
   display: flex;
@@ -21,10 +343,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
-  max-width: 100%;
-  height: auto;
-  transition: 0.3s ease-in-out;
+
+
+.imagen-small {
+  width: 20rem;
 }
 
 .product-details {
