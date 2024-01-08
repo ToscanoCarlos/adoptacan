@@ -1,31 +1,105 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,700|Poppins:200,200i,300,300i,400,500,500i,600,700,800,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,700|Poppins:200,200i,300,300i,400,500,500i,600,700,800,900&display=swap");
 
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+.seccion {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
+.contenido-centrado {
+  text-align: center;
+}
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .contenedor-anuncios {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
+.resumen-perro {
+  margin-top: 40px;
+}
+
+.resumen-perro p {
+  margin-bottom: 10px;
+}
+
+.resumen-perro .iconos-caracteristicas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resumen-perro .iconos-caracteristicas li {
+  margin-right: 20px;
+}
+
+.resumen-perro .iconos-caracteristicas li:last-child {
+  margin-right: 0;
+}
+
+.resumen-perro .boton-amarillo-block {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #fdd835;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.resumen-perro .imagen-perro {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 
+.centro-al-area{
+  text-align: center;
+}
+
+.boton-amarillo-block2 {
+  display: block;
+  max-width: 100%;
+  text-decoration: none;
+  background-color: orange;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.contenedor-anuncios {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid-columnas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
 .anuncio {
-  background-color: lighten(gray, 5);
-  border: 1px solid darken(gray, 10);
-  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  padding: 15px;
+  text-align: center;
+}
 
-  .contenido-anuncio {
-      padding: 2rem;
-  }
-
-  h3, p {
-      margin: 0;
-  }
-
+.img_perros {
+  width: 100%; /* Ocupar todo el ancho del contenedor padre */
+  height: 300px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Escalar la imagen para que llene el contenedor sin distorsión */
+  object-position: center; /* Centrar la imagen */
+  margin-bottom: 10px;
 }
 .precio {
   color: green;
@@ -35,22 +109,15 @@
 
 .iconos-caracteristicas {
   display: flex;
+  justify-content: center;
+  align-items: center;
   list-style: none;
   padding: 0;
-  max-width: 40rem;
+  margin: 0;
+}
 
-  li {
-      flex: 1;
-      display: flex;
-
-      img {
-          flex:  0 0 3rem;
-          margin-right: 1rem;
-      }
-      p {
-          font-weight: black;
-      }
-  }
+.iconos-caracteristicas li {
+  text-align: center;
 }
 
 

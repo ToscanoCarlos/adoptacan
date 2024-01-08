@@ -3,9 +3,9 @@
     incluirTemplate('header');
 ?>
 
-    <main class="contenedor seccion">
+    <main>
 
-        <h2>Perros en Adopción</h2>
+        <h2 class="centro-al-area">Perros en Adopción</h2>
 
         <?php 
             $limite = 10;

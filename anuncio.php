@@ -31,33 +31,30 @@
     incluirTemplate('header');
 ?>
 
-    <main class="contenedor seccion contenido-centrado">
-        <h1><?php echo $perro['nombre']; ?></h1>
+<main class="contenedor seccion contenido-centrado">
+    <h1 class="nombre-perro"><?php echo $perro['nombre']; ?></h1>
 
-     
-        <img loading="lazy" src="/adoptacan/imagenes/<?php echo $perro['imagen']; ?>" alt="Imagen del perro">
+    <img loading="lazy" src="/adoptacan/imagenes/<?php echo $perro['imagen']; ?>" alt="Imagen del perro" class="imagen-perro">
 
-        <div class="resumen-perro">
-            <p class="precio"><?php echo $perro['edad']; ?></p>
-            <ul class="iconos-caracteristicas">
-                <li>
-                    <p><?php echo $perro['edad']; ?></p>
-                </li>
-                <li>
-                    
-                    <p><?php echo $perro['genero']; ?></p>
-                </li>
-                <li>
-                   
-                    <p><?php echo $perro['extra']; ?></p>
-                </li>
-            </ul>
+    <div class="resumen-perro">
+        <p class="precio"><?php echo $perro['edad']; ?></p>
+        <ul class="iconos-caracteristicas">
+            <li>
+                <p class="edad-perro"><?php echo $perro['edad']; ?></p>
+            </li>
+            <li>
+                <p class="genero-perro"><?php echo $perro['genero']; ?></p>
+            </li>
+            <li>
+                <p class="extra-perro"><?php echo $perro['extra']; ?></p>
+            </li>
+        </ul>
 
-            <?php echo $perro['descripcion']; ?>
+        <p class="descripcion-perro"><?php echo $perro['descripcion']; ?></p>
 
-            <a href="/adoptacan/correo.php?id=<?php echo $perro['idPerro']; ?>" class="boton-amarillo-block">Adoptar</a>
-        </div>
-    </main>
+        <a href="/adoptacan/correo.php?id=<?php echo $perro['idPerro']; ?>" class="boton-amarillo-block2">Adoptar</a>
+    </div>
+</main>
 
 <?php 
     mysqli_close($db);
