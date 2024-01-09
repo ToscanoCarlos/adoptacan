@@ -101,7 +101,8 @@
                                 Comparte Vida</h3>
                             <p>Facilitamos la búsqueda y el proceso de adopción de perros, conectando a posibles adoptantes con refugios y rescatistas locales. 
                                  <br> Los usuarios pueden explorar perfiles detallados de perros disponibles para adopción y ponerse en contacto directamente con los responsables de su cuidado. <br></p>
-                            <a href="about.html" class="boxed-btn3">Adoptar</a>
+                                 <a href="/adoptacan/anuncios.php" class="boxed-btn3">Adopta</a>
+                                 
                         </div>
                     </div>
                 </div>
@@ -119,7 +120,7 @@
                         <div class="section_title">
                             <h3><span>Te necesitamos</span>
                                 Adopta</h3>
-                            <a href="contact.html" class="boxed-btn3">Contactanos</a>
+                            <a href="contact.php" class="boxed-btn3">Contactanos</a>
                         </div>
                     </div>
                 </div>
@@ -323,7 +324,7 @@ include 'includes/templates/anuncios.php';
                                 proceso de adopción abriendo paso a mas opciones</p>
                         </div>
                         <div class="contact_btn d-flex align-items-center justify-content-center">
-                            <a href="contact.html" class="boxed-btn4">Contactanos</a>
+                            <a href="contact.php" class="boxed-btn4">Contactanos</a>
                             <p>O  <a href="#"> +52 55 6495 3186</a></p>
                         </div>
                     </div>
