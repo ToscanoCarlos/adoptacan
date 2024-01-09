@@ -1,15 +1,19 @@
 <?php
 
     require '../../includes/funciones.php';
-    // $auth = estaAutenticado();
+    $auth = estaAutenticado();
 
-    // if(!$auth){
-    //     header('Location: /bienesraices');
-    // }
+    if(!$auth){
+        header('Location: /adoptacan/index.php');
+    }
 
     //Base de Datos
     require '../../includes/config/database.php';
     $db = conectarDB();
+
+    // Consultar para obtener los refugios
+    $consulta = "SELECT * FROM refugio";
+    $resultado = mysqli_query($db, $consulta);
 
     // Arreglo con mensajes de errores
     $errores = [];
@@ -22,6 +26,9 @@
     $extra = '';
     $imagen = '';
     $Refugio_idRefugio = '';
+
+
+
 
 
     // Ejecutar despues de que el usuario envia el formulario
@@ -46,6 +53,18 @@
         $imagen = mysqli_real_escape_string($db, $_POST['imagen']) ;
         $Refugio_idRefugio = mysqli_real_escape_string($db, $_POST['Refugio_idRefugio']) ;
         
+
+        // $consultaRefugio = "SELECT idRefugio,nombre FROM refugio";
+        // $resultadoRefugio = mysqli_query($db, $consultaRefugio);
+        // $refugio = mysqli_fetch_assoc($resultadoRefugio);
+
+        // $idRefugio = $refugio['idRefugio'];
+        // $nombreRefugio = $refugio['nombre'];
+
+
+
+        
+
         // Asignar files hacia una variable
         $imagen = $_FILES['imagen'];
 
@@ -124,6 +143,8 @@
             // var_dump($query);
             // echo "</pre>";
 
+            
+
 
             $resultado = mysqli_query($db, $query);
 
@@ -181,7 +202,7 @@
             <div class="col-lg-8">
                 <form class="form-contact contact_form" action="/adoptacan/admin/crud/crear.php" method="POST" enctype="multipart/form-data">
                     <?php include '../../includes/templates/formulario_perros.php'; ?>
-
+                    
 
                     <input type="submit" class="button button-contactForm boxed-btn" value="Enviar">
                 </form>
@@ -197,7 +218,7 @@
                 <div class="media contact-info">
                     <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                     <div class="media-body">
-                        <h3>+55 12341234</h3>
+                        <h3>+52 55 6495 3186</h3>
                         <p>Lunes a Viernes 7 A 13 hrs</p>
                     </div>
                 </div>

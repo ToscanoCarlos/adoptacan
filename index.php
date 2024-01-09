@@ -2,7 +2,9 @@
 <?php 
     require 'includes/funciones.php';
     incluirTemplate('header', $inicio = true);
+    $resultado = $_GET['resultado'] ?? null;
 ?>
+        
 
     <!-- slider_area_start -->
     <div class="slider_area">
@@ -11,9 +13,12 @@
                 <div class="row">
                     <div class="col-lg-5 col-md-6">
                         <div class="slider_text">
+                        <?php if( intval( $resultado) === 1 ): ?>
+            <p class="alerta exito">Tus Datos Se Enviaron Correctamente</p>
+        <?php endif; ?>
                             <h3>Adopta Amor <br> <span>Comparte Vida</span></h3>
                             <p>Un Hogar para Tu Amigo de Cuatro Patas <br> Promovemos la Adopción Responsable de Perros</p>
-                            <a href="contact.html" class="boxed-btn4">Contactanos</a>
+                            <a href="contact.php" class="boxed-btn4">Contactanos</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +91,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-6">
                     <div class="pet_thumb">
-                        <img src="img/about/pet_care.png" alt="">
+                        <img src="img/about/perro.png" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1 col-md-6">
@@ -314,7 +319,8 @@ include 'includes/templates/anuncios.php';
                     <div class="contact_text text-center">
                         <div class="section_title text-center">
                             <h3>¿Por que usarnos?</h3>
-                            <p>Nuestro producto es unico en México ya que facilitamos todo el proceso de adopcion</p>
+                            <p>Nuestro producto es unico en México ya que facilitamos todo el 
+                                proceso de adopción abriendo paso a mas opciones</p>
                         </div>
                         <div class="contact_btn d-flex align-items-center justify-content-center">
                             <a href="contact.html" class="boxed-btn4">Contactanos</a>

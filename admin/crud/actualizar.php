@@ -1,11 +1,11 @@
 <?php
 
 require '../../includes/funciones.php';
-// $auth = estaAutenticado();
+$auth = estaAutenticado();
 
-// if(!$auth){
-//     header('Location: /bienesraices');
-// }
+if(!$auth){
+    header('Location: /adoptacan/index.php');
+}
 
 // Validar ID 
 $id = $_GET['id'];
@@ -24,6 +24,9 @@ $consultaPerro = "SELECT * FROM perro WHERE idPerro = ${id}";
 $resultadoPerro = mysqli_query($db, $consultaPerro);
 $perro = mysqli_fetch_assoc($resultadoPerro);
 
+
+$consulta = "SELECT * FROM refugio";
+$resultado = mysqli_query($db, $consulta);
 
 // Consultar para obtener los vendedores
 // $consulta = "SELECT * FROM vendedores";

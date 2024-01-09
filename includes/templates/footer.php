@@ -21,26 +21,12 @@
                                 Nuestros Servicios
                             </h3>
                             <ul class="links">
-                                <li><a href="#">Adopcion</a></li>
-                                <li><a href="#">Productos de Cuidado </a></li>
-                                <li><a href="#">Alimentos </a></li>
-                                <li><a href="#">Orientación</a></li>
+                                <li><a href="/adoptacan/anuncios.php">Adopción</a></li>
+                                <li><a href="/adoptacan/service.php">Servicios</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-3  col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Menú
-                            </h3>
-                            <ul class="links">
-                                <li><a href="#">Sobre Nosotros</a></li>
-                                <li><a href="#">Politica de Privacidad</a></li>
-                                <li><a href="#">Terminos y Servicios</a></li>
-                                <li><a href="#">Login</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                     <div class="col-xl-3 col-md-6 col-lg-3 ">
                         <div class="footer_widget">
                             <div class="footer_logo">
@@ -48,26 +34,7 @@
                                     <img src="img/logo2.png" alt="">
                                 </a>
                             </div>
-                            <div class="socail_links">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
+                           
                         </div>
                     </div>
                 </div>

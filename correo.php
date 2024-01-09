@@ -9,6 +9,11 @@ require 'includes/config/database.php';
 require 'vendor/autoload.php';
 
 
+    $auth = estaAutenticado();
+
+    if(!$auth){
+        header('Location: /adoptacan/index.php');
+    }
 
 
 
@@ -60,11 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombrePerro = $perro['nombre'];
     $idRefugio = $perro['Refugio_idRefugio'];
 
-    $consultaRefugio = "SELECT nombre FROM refugio WHERE idRefugio = $idRefugio";
+    $consultaRefugio = "SELECT nombre,email FROM refugio WHERE idRefugio = $idRefugio";
     $resultadoRefugio = mysqli_query($db, $consultaRefugio);
     $refugio = mysqli_fetch_assoc($resultadoRefugio);
 
     $refugioNombre = $refugio['nombre'];
+    $refugioEmail = $refugio['email'];
+
+
 
 
 
@@ -126,6 +134,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query = "INSERT INTO adoptantes(nombre, apellido, edad, direccion, ciudad, codigo_postal, email, telefono, experiencia_mantenimiento_mascotas, motivo_adopcion, espacio_disponible) VALUES('$nombre', '$apellido', '$edad', '$direccion', '$ciudad', '$codigo_postal', '$email', '$telefono', '$experiencia_mantenimiento_mascotas', '$motivo_adopcion', '$espacio_disponible')";
             $resultado = mysqli_query($db, $query);
 
+
+
             if ($resultado) {
                 try {
                     // Construir el enlace de recuperación de contraseña con el token
@@ -133,14 +143,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                     $message = "
-                <html>
-                <head>
-                <title>Solicitud de adopción de perro </title>
-                </head>
-                <body>
-                <h2>Solicitud de adopción de $nombrePerro</h2>
-                <p>Nombre: $nombre</p>
-                <p>Apellido: $apellido</p>
+                    <html>
+                    <head>
+                        <title>Solicitud de adopción de perro</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                line-height: 1.6;
+                                background-color: #f4f4f4;
+                                color: #333;
+                                margin: 0;
+                                padding: 20px;
+                            }
+                            .header {
+                                text-align: center;
+                                padding-bottom: 20px;
+                            }
+                            .header img {
+                                max-width: 200px;
+                                height: auto;
+                            }
+                            h2 {
+                                color: #333;
+                            }
+                            /* Agrega más estilos según sea necesario */
+                        </style>
+                    </head>
+                    <body>
+                        <div class='header'>
+                            <h1>AdoptaCan</h1>
+                        </div>
+                        <h2>Solicitud de adopción de $nombrePerro</h2>
+                        <p>Nombre: $nombre</p>
+                        <p>Apellido: $apellido</p>
                 <p>Edad: $edad</p>
                 <p>Dirección: $direccion</p>
                 <p>Ciudad: $ciudad</p>
@@ -156,6 +191,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </html>
 ";
 
+
+
                     // Configuración del servidor SMTP de Gmail
                     $mail->isSMTP();
                     $mail->Host       = 'smtp.gmail.com';
@@ -167,7 +204,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     // Configuración de remitente y destinatario
                     $mail->setFrom('davidoconer555@gmail.com', 'Oscar Romero');
-                    $mail->addAddress($email, $email);
+                    $mail->addAddress($refugioEmail, $refugioEmail);
+
 
                     // Configuración del correo electrónico
                     $mail->isHTML(true);
@@ -176,9 +214,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Enviar el correo electrónico
                     $mail->send();
 
+
+
                     header('Location: index.php');
                 } catch (Exception $e) {
                     echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
+                }
+                if ($resultado) {
+                    header('Location: /adoptacan/index.php?resultado=1');
                 }
             }
         }
@@ -195,6 +238,7 @@ incluirTemplate('header');
             <div class="col-lg-12">
                 <div class="bradcam_text text-center">
                     <h3>Llenado de formulario para Solicitud de Adopción</h3>
+                    <p style="color: black;">Se enviará un correo al refugio correspondiente con tu información. Posteriormente, ellos se pondrán en contacto contigo.</p>
                 </div>
             </div>
         </div>

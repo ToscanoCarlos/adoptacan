@@ -60,7 +60,9 @@ $auth = $_SESSION['login'] ?? false;
                                         <li><a href="/adoptacan/anuncios.php">Adopta</a></li>
                                         <!-- <li><a href="about.php">Acerca de Nosotros</a></li> -->
                                         <li><a href="/adoptacan/service.php">Servicios</a></li>
+                                        <?php if ($auth) : ?>
                                         <li><a href="/adoptacan/admin/crud/crear.php">Poner en Adopción</a></li>
+                                        <?php endif; ?>
                                         <?php if ($auth) : ?>
                                             <li><a href="/adoptacan/close.php">Cerrar Sesión</a></li>
                                         <?php else : ?>

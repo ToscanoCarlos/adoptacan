@@ -3,7 +3,7 @@
 require 'includes/config/database.php';
 $db = conectarDB();
 // Autenticar el usuario
-
+$resultado = $_GET['resultado'] ?? null;
 $errores = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
